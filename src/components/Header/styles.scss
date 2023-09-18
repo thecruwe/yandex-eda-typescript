@@ -1,0 +1,128 @@
+.header {
+    display: flex; 
+    width: 100%;
+    min-height: 80px;
+    max-height: 80px;
+    border-bottom: 1px solid #D2D0CC;
+    background-color: #f5f4f2;
+    padding: 0 24px 0 24px;
+    align-items: center;
+
+    &__section {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    &__logo {
+        margin-right: 36px;
+        margin-bottom: 6px;
+    }
+
+    &__orders {
+        display: flex;
+        align-items: center;
+        padding: 15px;
+        margin: 0 10px;
+        white-space: nowrap;
+        height: 48px;
+        font-weight: 500;
+        border-radius: 16px;
+        border: 0;
+        font-size: 16px;
+        line-height: 21px;
+        background-color: rgba(92,90,87,0.1);
+        color: #21201F;
+        cursor: pointer;
+    }
+
+    &__total {
+        display: flex;
+        border-radius: 16px;
+        color: #21201F;
+        font-weight: 500;
+        background-color: #FCE000;
+        height: 48px;
+        padding: 0 18px;
+        align-items: center;
+        line-height: 21px;
+        justify-content: center;
+        font-size: 16px;
+
+        &-svg {
+            width: 24px;
+            height: 24px;
+            margin-right: 2px;
+            vertical-align: middle;
+        }
+    }
+
+    &__address {
+        flex-grow: 1;
+
+        &-action {
+            border: 2px solid #D2D0CC;
+            width: max-content;
+            border-radius: 16px;
+            background-color: #FCE000;
+            color: #21201F;
+            font-weight: 500;
+            height: 48px;
+            padding: 0 18px;
+            display: flex;
+            font-size: 16px;
+            transition: all 0.2s ease-out;
+            align-items: center;
+            line-height: 21px;
+            justify-content: center;
+            cursor: pointer;
+        }
+
+        &-span {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        &-svg {
+            top: -1px;
+            display: inline-block;
+            position: relative;
+            margin-right: 2px;
+            vertical-align: middle;
+            width: 24px;
+            height: 24px;
+        }
+        
+    }
+
+    &__language {
+        margin-right: 24px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+
+        &-svg {
+            width: 24px;
+            height: 24px;
+        }
+    }
+
+    &__sign-in {
+        display: flex;
+        align-items: center;
+        text-align: center;
+        padding: 18px 26px;
+        //margin-left: 10px;
+        height: 48px;
+        font-weight: 500;
+        border-radius: 16px;
+        border: 0;
+        font-size: 16px;
+        line-height: 21px;
+        background-color: rgba(92,90,87,0.1);
+        color: #21201F;
+        cursor: pointer;
+    }
+}
