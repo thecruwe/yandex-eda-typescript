@@ -3,7 +3,8 @@
         <div class="header__logo">
             <a 
             href="https://eda.yandex.ru/moscow?shippingType=delivery"
-            ><img src="https://avatars.mds.yandex.net/get-bunker/994123/62e784df90b806d5d740ef444a393b528f3226bc/svg">
+            >
+              <img src="https://avatars.mds.yandex.net/get-bunker/994123/62e784df90b806d5d740ef444a393b528f3226bc/svg">
             </a>
         </div>
         <div class="header__address">
@@ -27,14 +28,22 @@
                    style="text-decoration: none"
       ><div
           class="header__orders"
+          v-if="isAuth"
       >
         Ваши заказы
       </div></router-link>
       <div
           class="header__sign-in"
           @click="$router.push('/sign')"
+          v-if="!isAuth"
       >
         Войти
+      </div>
+      <div
+        class="header__sign-in"
+        @click="leaveFromAcc"
+        v-else>
+        Выйти
       </div>
     </div>
 </template>
@@ -45,20 +54,25 @@ import store from '@/store';
 import {
   computed
 } from "vue";
+import router from "@/router";
 
 export default {
   name: 'Header',
   setup() {
     const cart = computed(() => store.getters['cart/cart']);
-
     const totalSumm = computed(() => store.getters["cart/totalPriceInCart"]);
+    const isAuth = JSON.parse(localStorage.getItem('isAuth'));
 
-    const isAuth = JSON.parse(localStorage.getItem('Users'));
+    const leaveFromAcc = () => {
+      localStorage.removeItem('isAuth');
+      router.push('/mainPage')
+    }
 
     return {
       cart,
       totalSumm,
-      isAuth
+      isAuth,
+      leaveFromAcc
     }
   }
 }

@@ -29,7 +29,12 @@
             class="cart__footer-price-action"
             v-if="cart.length"
         >
-            <router-link to="/offer" class="cart__footer-price-action-to-pay"><span>Верно, к оплате</span></router-link>
+          <div
+              class="cart__footer-price-action-to-pay"
+              @click="acceptYourOrder"
+          >
+            <span>Верно, к оплате</span>
+          </div>
             <span>{{ totalSumm.toFixed(0) }}₽</span>
         </div>
     </div>
@@ -41,18 +46,28 @@ import {
   computed
 } from "vue";
 import store from "@/store";
+import router from "@/router";
 
 export default {
   name: 'CartFooter',
 
   setup() {
     const cart = computed(() => store.getters['cart/cart']);
-
     const totalSumm = computed(() => store.getters["cart/totalPriceInCart"]);
+
+    const acceptYourOrder = () => {
+      const isAuth = JSON.parse(localStorage.getItem('isAuth'));
+      if (isAuth) {
+        router.push('/offer')
+      } else {
+        router.push('/sign')
+      }
+    }
 
     return {
       cart,
-      totalSumm
+      totalSumm,
+      acceptYourOrder
     }
   }
 }

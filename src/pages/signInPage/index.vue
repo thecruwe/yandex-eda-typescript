@@ -65,7 +65,6 @@
         </div>
         </div>
         <div class="sign-in__content-actions-sign">
-<!--          <router-link to="" style="text-decoration: none">-->
             <div
               class="sign-in__content-action-sign-up"
               v-if="isActive"
@@ -73,7 +72,6 @@
           >
               Зарегистрироваться
             </div>
-<!--          </router-link>-->
           <div
               class="sign-in__content-action-sign-in"
               v-if="!isActive"
@@ -94,19 +92,10 @@ import router from "@/router";
 export default {
   name: 'signInPage',
   setup() {
-
     const isActive = ref(false);
-
     const incorrectData = ref('');
-
-    const signInTrue = ref(false);
-
-    const signUpTrue = ref(false);
-
     const inputEmail = ref('');
-
     const inputPassword = ref('');
-
     const inputPasswordRepeat = ref('');
     const switchSignInOrSignUp = () => {
       isActive.value = !isActive.value;
@@ -114,35 +103,41 @@ export default {
 
     const signUp = () => {
       const idUser = Math.random().toString(16).slice(2);
-      signUpTrue.value = true;
       const userInfo = {
         idUser: idUser,
         email: inputEmail.value,
         password: inputPassword.value,
-        signUpTrue: signUpTrue.value,
-        signInTrue: signInTrue.value,
       };
       const profilesOfUsers = localStorage.getItem("Users") ? JSON.parse(localStorage.getItem("Users")) : [];
-      if (inputPassword.value === inputPasswordRepeat.value && inputEmail.value.length > 5) {
+      const foundEmail = profilesOfUsers.find((user) => user.email === inputEmail.value);
+      if (inputPassword.value === inputPasswordRepeat.value && inputEmail.value.length > 5 && !foundEmail) {
         profilesOfUsers.unshift(userInfo);
+        const isAuth = {
+          userIsAuth: idUser
+        };
         localStorage.setItem('Users', JSON.stringify(profilesOfUsers));
-        router.push('/shop')
+        localStorage.setItem('isAuth', JSON.stringify(isAuth));
+        router.push('/shop');
       } else if (inputEmail.value.length < 5) {
         incorrectData.value = 'incorrectEmail';
         alert('Неправильная почта');
       } else if (inputPassword.value !== inputPasswordRepeat.value) {
         incorrectData.value = 'incorrectPassword';
         alert('Неправильный пароль');
+      } else if (foundEmail) {
+        incorrectData.value = 'incorrectEmail';
+        alert('Данная почта уже используется');
       }
     };
 
-
     const signIn = () => {
       const userProfileInfo = JSON.parse(localStorage.getItem('Users'));
-      if (inputEmail.value === userProfileInfo[0].email && inputPassword.value === userProfileInfo[0].password) {
-        userProfileInfo[0].signInTrue = true;
+      const foundLog = userProfileInfo.find((profile) => profile.email === inputEmail.value);
+      const foundPas = userProfileInfo.find((profile) => profile.password === inputPassword.value);
+      const foundId = userProfileInfo.filter((profile) => profile.email === inputEmail.value);
+      if (foundLog && foundPas) {
         const isAuth = {
-          userIsAuth: JSON.parse(localStorage.getItem('Users'))[0].idUser
+          userIsAuth: foundId[0].idUser
         };
         localStorage.setItem('Users', JSON.stringify(userProfileInfo));
         localStorage.setItem('isAuth', JSON.stringify(isAuth));

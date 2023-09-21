@@ -28,12 +28,12 @@ export default {
   components: { product },
 
   setup() {
+    const categories = computed(() => store.getters['categories/categoriesWithProducts']);
+
     onMounted(() => {
       store.dispatch('categories/fetchCategories');
       store.dispatch('products/fetchProducts');
     })
-
-    const categories = computed(() => store.getters['categories/categoriesWithProducts']);
 
     return {
       categories,

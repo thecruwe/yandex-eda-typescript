@@ -10,7 +10,10 @@
               Очистить
             </div>
         </div>
-        <div class="cart__content" v-if="cart.length">
+        <div
+            class="cart__content"
+            v-if="cart.length"
+        >
             <div
                 class="cart__product-list"
                 v-for="product in cart"
@@ -74,11 +77,8 @@ export default {
   name: 'Cart',
   components: { CartFooter },
   setup() {
-
     const cart = computed(() => store.getters['cart/cart']);
-
     const productsWithId = computed(() => store.getters['products/productsWithID']);
-
     const totalSumm = computed(() => store.getters['cart/totalPriceInCart']);
     const removeFromCart = () => {
       store.commit('cart/REMOVE_FROM_CART')

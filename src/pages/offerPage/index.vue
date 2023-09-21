@@ -51,13 +51,23 @@
               <h2>Ваш заказ</h2>
               <div class="content__left-column-cart-header-action">
                 <img src="https://yastatic.net/s3/eda-front/www/assets/desktop.trash.e4a122e26252ac568700.svg" class="content__left-column-cart-header-action-img">
-                <router-link to="/shop" style="text-decoration: none;"><span @click="removeFromCart" class="cart__action-to-clear-cart">Очистить корзину</span></router-link>
+                <router-link to="/shop" style="text-decoration: none;">
+                  <span
+                      @click="removeFromCart"
+                      class="cart__action-to-clear-cart"
+                  >
+                    Очистить корзину
+                  </span>
+                </router-link>
               </div>
             </div>
             <div class="content__left-column-cart-list">
               <div class="content__left-column-cart-product" v-for="product in cart" :key="product.id">
                 <div class="content__left-column-cart-product-info">
-                  <img class="content__left-column-cart-product-info-img" :src="productsWithId[product.id].image">
+                  <img
+                      class="content__left-column-cart-product-info-img"
+                      :src="productsWithId[product.id].image"
+                  >
                 <span>{{ productsWithId[product.id].title }}</span>
                   <div class="content__left-column-cart-product-info-rate">Рейтинг: {{ productsWithId[product.id].rating.rate }}</div>
                 </div>
@@ -98,8 +108,13 @@
               <span>81 ₽</span>
             </div>
             <div class="content__right-column-order-info-action-to-pay">
-              <router-link to="" class="action__pay" @click="mackingOrder()"><div>Оплатить</div></router-link>
-              <span class="action-span">108 ₽</span>
+                <div
+                    class="action__pay"
+                    @click="mackingOrder()"
+                >
+                  Оплатить
+                </div>
+              <span class="action-span">{{ totalSumm }} ₽</span>
             </div>
           </div>
       </div>
@@ -111,6 +126,7 @@
 <script>
 import {computed, ref} from "vue";
 import store from "@/store";
+import router from "@/router";
 
 export default {
   name: 'offerPage',
@@ -127,11 +143,14 @@ export default {
       const userId = JSON.parse(localStorage.getItem("isAuth"));
       const orders = {
         ID: userId.userIsAuth,
-        productsInOrder: cart.value
+        productsInOrder: cart.value,
+        totalPrice: totalSumm.value
       }
       const ordersFromUsers = localStorage.getItem("Orders") ? JSON.parse(localStorage.getItem("Orders")) : [];
       ordersFromUsers.push(orders);
       localStorage.setItem('Orders', JSON.stringify(ordersFromUsers));
+      router.push('/shop');
+      removeFromCart();
     };
     const changeMethodOfDelivery = () => {
       delivery.value = !delivery.value;
