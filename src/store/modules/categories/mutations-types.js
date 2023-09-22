@@ -1,1 +1,2 @@
-export const ADD_CATEGORIES = 'ADD_CATEGORIES';
+export var ADD_CATEGORIES = 'ADD_CATEGORIES';
+//# sourceMappingURL=mutations-types.js.map

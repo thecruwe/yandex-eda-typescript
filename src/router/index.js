@@ -1,10 +1,9 @@
 import { createRouter, createWebHistory } from 'vue-router';
-import mainPage from '@/App.vue'
+import mainPage from '@/App.vue';
 import signIn from '@/pages/signInPage/index.vue';
-import offer from '@/pages/offerPage';
-import orders from '@/pages/orders';
-
-const routes = [
+import offer from '@/pages/offerPage/index.vue';
+import orders from '@/pages/orders/index.vue';
+var routes = [
     {
         path: '/shop',
         name: 'mainPage',
@@ -24,20 +23,16 @@ const routes = [
         path: '/secure',
         name: 'homePage',
         component: mainPage,
-
     },
     {
         path: '/orders',
         name: 'ordersPage',
         component: orders
     }
-]
-
-const router = createRouter({
+];
+var router = createRouter({
     history: createWebHistory(),
-    routes
+    routes: routes
 });
-
-
-
-export default router
+export default router;
+//# sourceMappingURL=index.js.map

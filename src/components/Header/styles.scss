@@ -63,7 +63,7 @@
 
         &-action {
             border: 2px solid #D2D0CC;
-            width: max-content;
+            width: 246px;
             border-radius: 16px;
             background-color: #FCE000;
             color: #21201F;
@@ -77,6 +77,7 @@
             line-height: 21px;
             justify-content: center;
             cursor: pointer;
+            white-space: nowrap;
         }
 
         &-span {
@@ -115,7 +116,6 @@
         align-items: center;
         text-align: center;
         padding: 18px 26px;
-        //margin-left: 10px;
         height: 48px;
         font-weight: 500;
         border-radius: 16px;

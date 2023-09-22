@@ -123,15 +123,18 @@
   </div>
 </template>
 
-<script>
-import {computed, ref} from "vue";
+<script lang="ts">
+import {
+  computed,
+  ref,
+} from "vue";
 import store from "@/store";
 import router from "@/router";
 
-export default {
+export default{
   name: 'offerPage',
   setup() {
-    const delivery = ref('false');
+    const delivery = ref(false);
 
     const cart = computed(() => store.getters['cart/cart']);
 
@@ -140,13 +143,14 @@ export default {
     const totalSumm = computed(() => store.getters['cart/totalPriceInCart']);
 
     const mackingOrder = () => {
-      const userId = JSON.parse(localStorage.getItem("isAuth"));
+      const userId = JSON.parse(localStorage.getItem("isAuth") as string);
       const orders = {
         ID: userId.userIsAuth,
         productsInOrder: cart.value,
         totalPrice: totalSumm.value
       }
-      const ordersFromUsers = localStorage.getItem("Orders") ? JSON.parse(localStorage.getItem("Orders")) : [];
+      const ordersFromUsers = localStorage.getItem("Orders") ?
+          JSON.parse(localStorage.getItem("Orders") as string) : [];
       ordersFromUsers.push(orders);
       localStorage.setItem('Orders', JSON.stringify(ordersFromUsers));
       router.push('/shop');
@@ -159,12 +163,12 @@ export default {
       store.commit('cart/REMOVE_FROM_CART')
     };
 
-    const addToCart = (elementID) => { //
-      store.commit('cart/ADD_TO_CART', elementID);
+    const addToCart = (productID: number) => { //
+      store.commit('cart/ADD_TO_CART', productID);
     };
 
-    const removeProductOneFromCart = (elementID) => {
-      store.commit('cart/REMOVE_PRODUCT_ONE_FROM_CART', elementID);
+    const removeProductOneFromCart = (productID: number) => {
+      store.commit('cart/REMOVE_PRODUCT_ONE_FROM_CART', productID);
     };
 
     return {

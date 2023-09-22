@@ -1,15 +1,9 @@
+var _a;
 import * as types from './mutations-types';
-
-const mutations = {
-    [types.ADD_PRODUCTS](state, products) {
-      state.products = products;
-      state.products.forEach((product) => {
-          product.quantity = state.quantity;
-          product.productPrice = state.productPrice;
-          product.productPrice = product.price;
-      });
-    }
-};
-
-
+var mutations = (_a = {},
+    _a[types.ADD_PRODUCTS] = function (state, products) {
+        state.products = products;
+    },
+    _a);
 export default mutations;
+//# sourceMappingURL=mutations.js.map

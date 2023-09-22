@@ -15,13 +15,30 @@
   <router-view />
 </template>
 
-<script setup>
+<script lang="ts">
 
-import Header from './components/Header'
-import SidebarMenu from './components/SidebarMenu'
-import Preview from './components/Preview'
-import Cart from './components/Cart'
-import Category from './components/Category'
+import Header from './components/Header/index.vue';
+import SidebarMenu from './components/SidebarMenu/index.vue';
+import Preview from './components/Preview/index.vue';
+import Cart from './components/Cart/index.vue';
+import Category from './components/Category/index.vue';
+export default {
+  name: 'app',
+  components: {
+    Header,
+    SidebarMenu,
+    Preview,
+    Cart,
+    Category
+  },
+  setup() {
+    return {
+
+    }
+  }
+}
+
+
 
 </script>
 
@@ -61,14 +78,6 @@ import Category from './components/Category'
 
 .content::-webkit-scrollbar {
   width: 0;
-}
-
-.contant-container {
-  justify-content: center;
-  padding: 22px 6px;
-  margin-left: 10px;
-  max-width: 1873px;
-  min-width: 1200px;
 }
 
 .sidebar-right {

@@ -1,10 +1,9 @@
-export const products = ( state ) => state.products;
-export const productsWithID = (rootGetters, state) => {
-    return state.obj = state.products.reduce(function(result, product) {
-        return {
-            ...result,
-           [product.id]: product,
-        }
-}, {})
+import { __assign } from "tslib";
+export var products = function (state) { return state.products; };
+export var productsWithID = function (rootGetters, state) {
+    return state.products.reduce(function (result, product) {
+        var _a;
+        return __assign(__assign({}, result), (_a = {}, _a[product.id] = product, _a));
+    }, {});
 };
-// (убрать storeInstance). (передавать в product с помощью пропсов product.id, где с помощью геттеров брать продукт.)!(По написанной логике сделать добавление товара в корзину.)!
+//# sourceMappingURL=getters.js.map

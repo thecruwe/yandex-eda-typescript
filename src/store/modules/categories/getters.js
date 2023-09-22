@@ -1,17 +1,18 @@
-export const categoriesWithProducts = (state, getters, rootState) => {
-    const categories = [];
-    const products = rootState.products.products;
-    state.categories.forEach(categoryName => {
-        const category = {
+export var categoriesWithProducts = function (state, getters, rootState) {
+    var categories = [];
+    var products = rootState.products.products;
+    state.categories.forEach(function (categoryName) {
+        var category = {
             name: categoryName,
             products: [],
         };
-        products.forEach(product => {
+        products.forEach(function (product) {
             if (product.category === categoryName) {
-                category.products.push(product.id)
+                category.products.push(product.id);
             }
         });
         categories.push(category);
     });
     return categories;
 };
+//# sourceMappingURL=getters.js.map

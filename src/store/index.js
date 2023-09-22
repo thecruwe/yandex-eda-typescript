@@ -1,9 +1,8 @@
 import { createStore } from 'vuex';
 import modules from './modules';
-
-const storeInstance = createStore({
-    modules,
+var storeInstance = createStore({
+    modules: modules,
     devtools: true,
 });
-
 export default storeInstance;
+//# sourceMappingURL=index.js.map

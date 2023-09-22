@@ -1,3 +1,4 @@
-export const initialState = () => ({
+export var initialState = function () { return ({
     products: [],
-});
+}); };
+//# sourceMappingURL=state.js.map

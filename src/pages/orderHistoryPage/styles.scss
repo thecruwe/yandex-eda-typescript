@@ -8,7 +8,7 @@
   bottom: 0;
   top: 0;
   overflow: auto;
-  padding: 20px;
+  //padding: 20px;
   align-items: center;
 
   &__container {
@@ -31,13 +31,13 @@
   }
 
   &__title {
-    margin: 10px;
+    margin: 20px 0;
   }
 
   &__list {
     width: 460px;
     padding: 24px;
-    margin: 10px 0;
+    margin-bottom: 10px;
     border-radius: 32px;
     box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.07);
     background-color: #FFFFFF;
@@ -175,11 +175,30 @@
 .orders__info-address {
   font-size: 16px;
   line-height: 21px;
-  font-feature-settings: 'pnum' on, 'lnum' on;
 }
 
 .orders__info-composition-title {
   color: #9E9B98;
   font-size: 16px;
   line-height: 21px;
+}
+
+.offer_header-action-to-back {
+  display: flex;
+  align-items: center;
+}
+
+.header__action-to-back-router {
+  color: #9E9B98;
+  text-decoration: none;
+}
+
+.header__action-to-back-img {
+  width: 16px;
+  height: 16px;
+  margin-right: 6px;
+}
+
+.orders__header {
+  display: flex;
 }

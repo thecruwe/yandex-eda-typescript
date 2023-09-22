@@ -1,27 +1,31 @@
+var _a;
 import * as types from './mutations-types';
-
-const mutations = {
-    [types.ADD_TO_CART](state, elementID) {
-        const product = state.cart.find((product) => product.id === elementID);
+var mutations = (_a = {},
+    _a[types.ADD_TO_CART] = function (state, productID) {
+        var product = state.cart.find(function (product) { return product.id === productID; });
         if (product) {
             product.quantity++;
-        } else {
-            const quantity = 1;
-            const productInCart = {id: elementID, quantity}
-            state.cart.push(productInCart)
         }
-      },
-      [types.REMOVE_FROM_CART](state) {
+        else {
+            var quantity = 1;
+            var productInCart = { id: productID, quantity: quantity };
+            state.cart.push(productInCart);
+        }
+    },
+    _a[types.REMOVE_FROM_CART] = function (state) {
         state.cart = [];
-      },
-    [types.REMOVE_PRODUCT_ONE_FROM_CART](state, elementID) {
-        const product = state.cart.find((product) => product.id === elementID )
-        if (product.quantity === 1 ) {
-            state.cart = state.cart.filter((product) => product.id !== elementID);
-        } else {
+    },
+    _a[types.REMOVE_PRODUCT_ONE_FROM_CART] = function (state, productID) {
+        var product = state.cart.find(function (product) { return product.id === productID; });
+        if (!product)
+            return;
+        if (product.quantity === 1) {
+            state.cart = state.cart.filter(function (product) { return product.id !== productID; });
+        }
+        else {
             product.quantity--;
         }
-    }
-}
-
+    },
+    _a);
 export default mutations;
+//# sourceMappingURL=mutations.js.map

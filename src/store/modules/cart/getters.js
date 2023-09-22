@@ -1,12 +1,17 @@
-export const cart = (state) => state.cart;
-export const productsInCart = (state) => {
-    return state.cart.reduce((result, {id, quantity}) =>
-        ({
-            ...result,
-            [id]: quantity,
-    }), {})
+import { __assign } from "tslib";
+export var cart = function (state) { return state.cart; };
+export var productsInCart = function (state) {
+    return state.cart.reduce(function (result, _a) {
+        var _b;
+        var id = _a.id, quantity = _a.quantity;
+        return (__assign(__assign({}, result), (_b = {}, _b[id] = quantity, _b)));
+    }, {});
 };
-export const totalPriceInCart = (state, getters, rootState, rootGetters) => {
-    const products = rootGetters["products/productsWithID"];
-    return state.cart.reduce((accumulator, {id, quantity}) => accumulator + products[id].price * quantity, 0);
+export var totalPriceInCart = function (state, getters, rootState, rootGetters) {
+    var products = rootGetters["products/productsWithID"];
+    return state.cart.reduce(function (accumulator, _a) {
+        var id = _a.id, quantity = _a.quantity;
+        return accumulator + products[id].price * quantity;
+    }, 0);
 };
+//# sourceMappingURL=getters.js.map

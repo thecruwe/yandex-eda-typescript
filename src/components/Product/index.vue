@@ -1,5 +1,5 @@
 <template>
-    <div class="product">
+    <div class="product" v-if="product">
         <img
             class="product__picture"
             :src="product.image"
@@ -36,11 +36,13 @@
     </div>
 </template>
 
-<script>
+<script lang="ts">
 import {
   computed,
 } from 'vue';
 import store from '@/store';
+import {TProduct, TProductsWithId} from "@/store/modules/products/types";
+import {TCartProduct} from "@/store/modules/cart/types";
 
 export default {
   name: 'CardProduct',
@@ -50,21 +52,21 @@ export default {
       required: true,
     },
   },
-  setup(props) {
-    const product = computed(() => productsWithId.value[props.productId]);
+  setup(props: any) {
+    const product = computed<TProduct | null>(() => productsWithId.value[props.productId]);
 
-    const productsWithId = computed(() => store.getters['products/productsWithID']);
+    const productsWithId = computed<TProductsWithId>(() => store.getters['products/productsWithID']);
 
-    const cart = computed(() => store.getters["cart/cart"]);
+    const cart = computed<TCartProduct[]>(() => store.getters["cart/cart"]);
 
-    const quantity = computed(() => store.getters["cart/productsInCart"][props.productId]);
+    const quantity = computed<number>(() => product.value?.quantity || 0);
 
     const addToCart = () => { //
-        store.commit('cart/ADD_TO_CART', props.productId);
+        store.commit('cart/ADD_TO_CART', props.productId as number);
     };
 
-    const removeProductOneFromCart = (elementID) => {
-      store.commit('cart/REMOVE_PRODUCT_ONE_FROM_CART', elementID);
+    const removeProductOneFromCart = (productID: number) => {
+      store.commit('cart/REMOVE_PRODUCT_ONE_FROM_CART', productID);
     };
 
     return {

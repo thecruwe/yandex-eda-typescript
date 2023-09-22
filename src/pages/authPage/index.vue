@@ -38,6 +38,7 @@
                 v-model="inputPassword"
                 class="sign-in__content-wrapper-input"
                 placeholder="Введите пароль"
+                type='password'
             >
           </div>
           <div
@@ -55,16 +56,17 @@
                 :class="{incorrectData: incorrectData === 'incorrectPassword'}"
                 v-model="inputPassword"
                 placeholder="Введите пароль"
+                type='password'
             >
             <input
                 class="sign-up__content-wrapper-input-password"
                 :class="{incorrectData: incorrectData === 'incorrectPassword'}"
                 v-model="inputPasswordRepeat"
                 placeholder="Подтвердите пароль"
+                type='password'
             >
         </div>
         </div>
-        <div class="sign-in__content-actions-sign">
             <div
               class="sign-in__content-action-sign-up"
               v-if="isActive"
@@ -79,7 +81,6 @@
           >
             Войти
           </div>
-        </div>
     </div>
   </div>
 </template>

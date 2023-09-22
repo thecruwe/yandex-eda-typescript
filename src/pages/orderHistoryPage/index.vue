@@ -1,7 +1,12 @@
 <template>
   <div class="orders">
+    <div class="header">
+      <router-link to="/" class="header__action-to-back-router">
+        <img src="https://yastatic.net/s3/eda-front/www/assets/desktop.back.f12112a002a623ccef71.svg" class="header__action-to-back-img" alt="Изображение стрелки назад">
+        Назад
+      </router-link>
+    </div>
     <div class="container">
-
     <h2 class="orders__title">Мои заказы</h2>
     <div class="orders__container">
     <div class="orders__history">
@@ -9,6 +14,7 @@
         class="orders__list"
         v-for="order of listOfOrders"
         :key="order"
+        @click="showMeUrId(order.productsInOrder)"
     >
       <div class="orders__product">
         <div class="orders__product-header">
@@ -21,9 +27,9 @@
             <div class="orders__product-header-delivery-info-status">отменён</div>
           </div>
         </div>
-        <div class="orders__product-content" v-for="product in order.productsInOrder" :key="product.ID" @click="showMeUrId(order.productsInOrder)">
+        <div class="orders__product-content" v-for="product in order.productsInOrder" :key="product.ID">
           {{product}}
-          <img class="orders__product-content-img" :src="productsWithId[product.id].image">
+          <img class="orders__product-content-img" :src="productsWithId[product.id].image" alt="Картинка товара">
           <div class="orders__product-content-title">{{productsWithId[product.id].title}}</div>
         </div>
       </div>
@@ -41,7 +47,7 @@
       <div class="orders__info-composition-title">Состав заказа</div>
       <div class="orders__info-composition">
         <img class="orders__info-composition-img">
-        <div class="orders__info-composition-title">{{ massiv[0]}}
+        <div class="orders__info-composition-title">{{ massiv }}
           <span></span>
         </div>
         <div class="orders__info-composition-price"></div>
@@ -85,19 +91,20 @@ export default {
     const showMeUrId = (product) => {
       if (massiv) {
         massiv.shift()
-        massiv.push(product)
+        product.forEach((item) => {
+          massiv.push(item);
+        });
       } else {
         massiv.push(product)
       }
-      console.log('product',product)
-      console.log(massiv)
+      console.log(product)
+      console.log(massiv);
     }
-
     return {
       listOfOrders,
       productsWithId,
       showMeUrId,
-      massiv
+      massiv,
     }
   }
 }

@@ -59,15 +59,15 @@
                 class="cart__empty-block-img"
                 src="https://avatars.mds.yandex.net/get-bunker/61205/a11b38948b6d328e2f739d602fa36b15b2680ba8/svg"
             >
-            <div class="cart__empty-block-title">В вашей корзине пока пусто</div>
+            <span class="cart__empty-block-title">В вашей корзине пока пусто</span>
         </div>
         <CartFooter />
     </div>
 </template>
 
-<script>
+<script lang="ts">
 
-import CartFooter from "@/components/Cart/components/CartFooter";
+import CartFooter from "@/components/Cart/components/CartFooter/index.vue";
 import store from '@/store';
 import {
   computed
@@ -79,23 +79,23 @@ export default {
   setup() {
     const cart = computed(() => store.getters['cart/cart']);
     const productsWithId = computed(() => store.getters['products/productsWithID']);
-    const totalSumm = computed(() => store.getters['cart/totalPriceInCart']);
+    const totalPriceInCart = computed<number | null>(() => store.getters['cart/totalPriceInCart']);
     const removeFromCart = () => {
       store.commit('cart/REMOVE_FROM_CART')
     };
 
-    const addToCart = (elementID) => { //
-      store.commit('cart/ADD_TO_CART', elementID);
+    const addToCart = (productID: number) => { //
+      store.commit('cart/ADD_TO_CART', productID);
     };
 
-    const removeProductOneFromCart = (elementID) => {
-      store.commit('cart/REMOVE_PRODUCT_ONE_FROM_CART', elementID);
+    const removeProductOneFromCart = (productID: number) => {
+      store.commit('cart/REMOVE_PRODUCT_ONE_FROM_CART', productID);
     };
 
     return {
       cart,
       productsWithId,
-      totalSumm,
+      totalPriceInCart: totalPriceInCart,
       removeFromCart,
       addToCart,
       removeProductOneFromCart
