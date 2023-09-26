@@ -9,7 +9,7 @@ export const categoriesWithProducts = (state: TStateCategory, getters: any, root
             name: categoryName,
             products: [],
         };
-        products.forEach((product:TProduct) => {
+        products.forEach((product: TProduct) => {
             if (product.category === categoryName) {
                 category.products.push(product.id)
             }

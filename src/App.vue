@@ -1,18 +1,18 @@
 <template>
   <div class="main-wrapper">
-    <Header />
+    <Header/>
     <div class="content">
-      <sidebarMenu />
+      <sidebarMenu/>
       <div class="main-block">
-        <preview />
-        <category />
+        <preview/>
+        <category/>
       </div>
       <div class="sidebar-right">
-        <cart />
+        <cart/>
       </div>
     </div>
   </div>
-  <router-view />
+  <router-view/>
 </template>
 
 <script lang="ts">
@@ -22,6 +22,7 @@ import SidebarMenu from './components/SidebarMenu/index.vue';
 import Preview from './components/Preview/index.vue';
 import Cart from './components/Cart/index.vue';
 import Category from './components/Category/index.vue';
+
 export default {
   name: 'app',
   components: {
@@ -32,12 +33,9 @@ export default {
     Category
   },
   setup() {
-    return {
-
-    }
+    return {}
   }
 }
-
 
 
 </script>
@@ -57,7 +55,7 @@ export default {
   font-family: 'Arimo', sans-serif;
 }
 
-.main-wrapper{
+.main-wrapper {
   background-color: #f5f4f2;
   display: flex;
   position: fixed;

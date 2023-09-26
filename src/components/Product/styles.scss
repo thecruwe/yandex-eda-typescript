@@ -1,110 +1,106 @@
 .product {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 12px;
+  background: #FFFFFF;
+  border-radius: 24px;
+  min-height: 358px;
+  max-width: 217px;
+  height: 358px;
+  margin: 12px 4px;
+
+  &__action-svg {
+    width: 24px;
+    height: 24px;
+  }
+
+  &__picture {
+    margin: auto;
+    width: 150px;
+    min-height: 155px;
+  }
+
+  &__price {
+    margin-top: 2px;
+    font-size: 24px;
+    line-height: 27px;
+    font-weight: 500;
+  }
+
+  &__title {
+    font-size: 16px;
+    line-height: 19px;
+    overflow: auto;
+    height: 200px;
+
+    &::-webkit-scrollbar {
+      width: 0;
+    }
+  }
+
+  &__weight {
+    font-size: 16px;
+    color: #9E9B98;
+  }
+
+  &__action {
     display: flex;
-    flex-direction: column;
-    gap: 8px;
-    padding: 12px;
-    background: #FFFFFF;
-    border-radius: 24px;
-    /* width: 217px; */
-    min-height: 358px;
-    max-width: 217px;
-    height: 358px;
-    margin: 12px 4px;
-    // justify-content: center;
+    align-items: center;
+    justify-content: center;
+    min-height: 48px;
+    border-radius: 16px;
+    background-color: #F5F4F2;
+    cursor: pointer;
 
-    &__action-svg {
-        width: 24px;
-        height: 24px;
+    &-title {
+      font-size: 16px;
+      line-height: 17px;
+    }
+  }
+
+  &__actions {
+    display: flex;
+    position: relative;
+    font-size: 13px;
+    align-items: center;
+    font-family: YSText, sans-serif;
+    line-height: 14px;
+    white-space: nowrap;
+    border-radius: 16px;
+    justify-content: space-between;
+    background-color: #F5F4F2;
+    height: 48px;
+    padding: 14px;
+    margin-top: auto;
+    cursor: pointer;
+
+    &-plus {
+      width: 24px;
+      height: 24px;
+      padding: 0;
+      color: #21201F;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
-    &__picture {
-        margin: auto;
-        border-radius: 24px;
-        width: 150px;
-        height: 165px;
+    &-minus {
+      width: 24px;
+      height: 24px;
+      color: #21201F;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
-    &__price {
-        margin-top: 2px;
-        font-size: 24px;
-        line-height: 27px;
-        font-weight: 500; 
+    &-span {
+      font-size: 16px;
+      line-height: 17px;
     }
-
-    &__title {
-        font-size: 16px;
-        line-height: 19px;
-        flex-grow: 1;
-        overflow: auto;
-
-        &::-webkit-scrollbar {
-            width: 0;
-        }
-    }
-
-    &__weight {
-        font-size: 16px;
-        color: #9E9B98;
-    }
-
-    &__action {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        min-height: 48px;
-        border-radius: 16px;
-        background-color: #F5F4F2;
-        cursor: pointer;
-    
-        &-title {
-            font-size: 16px;
-            line-height: 17px;
-        }
-    }
-
-    &__actions {
-        display: flex;
-        position: relative;
-        font-size: 13px;
-        align-items: center;
-        font-family: YSText, sans-serif;
-        line-height: 14px;
-        white-space: nowrap;
-        border-radius: 16px;
-        justify-content: space-between;
-        background-color: #F5F4F2;
-        height: 48px;
-        padding: 14px;
-        margin-top: auto;
-        cursor: pointer;
-
-        &-plus {
-            width: 24px;
-            height: 24px;
-            padding: 0;
-            color: #21201F;
-            border: none;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        &-minus {
-            padding: 0px;
-            width: 24px;
-            height: 24px;
-            color: #21201F;
-            border: none;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        &-span {
-            font-size: 16px;
-            line-height: 17px;
-        }
-    }
+  }
 }

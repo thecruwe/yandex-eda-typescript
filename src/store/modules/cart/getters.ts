@@ -6,7 +6,7 @@ export const productsInCart = (state: TStateCart) => {
         ({
             ...result,
             [id]: quantity,
-    }), {})
+        }), {})
 };
 export const totalPriceInCart = (state: TStateCart, getters: any, rootState: any, rootGetters: any) => {
     const products = rootGetters["products/productsWithID"];

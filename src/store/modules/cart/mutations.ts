@@ -2,7 +2,7 @@ import * as types from './mutations-types';
 import {TCartProduct, TStateCart} from "@/store/modules/cart/types";
 
 const mutations = {
-    [types.ADD_TO_CART](state: TStateCart, productID: number) {
+    [types.ADD_PRODUCT_TO_CART](state: TStateCart, productID: number) {
         const product: TCartProduct | undefined = state.cart.find((product: TCartProduct) => product.id === productID);
         if (product) {
             product.quantity++;
