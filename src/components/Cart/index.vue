@@ -3,7 +3,7 @@
     <div class="cart__header">
       <h2 class="cart__header-title">Корзина</h2>
       <div
-          class="cart__header-action-remove"
+          class="cart__header-action-clear"
           v-if="cart.length"
           @click="emptyCart"
       >
@@ -23,13 +23,12 @@
             class="cart__product-img"
             :src="productsWithId[product.id].image"
             alt="Картинка товара"
-
         >
         <div class="cart__product-info-container">
           <span class="cart__product-title">{{ productsWithId[product.id].title }}</span>
           <div class="cart__product-info">
-            <span class="cart__product-price">{{ productsWithId[product.id].price.toFixed(0) }} ₽</span>
-            <span class="cart__product-weight">{{ productsWithId[product.id].rating.rate }}</span>
+            <span class="cart__product-info-price">{{ productsWithId[product.id].price.toFixed(0) }} ₽</span>
+            <span class="cart__product-info-weight">{{ productsWithId[product.id].rating.rate }}</span>
           </div>
         </div>
         <div class="cart__product-actions">
@@ -37,21 +36,14 @@
               class="cart__product-actions-minus"
               @click="removeProductOneFromCart(product.id)"
           >
-            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path fill-rule="evenodd" clip-rule="evenodd" d="M6 12a1 1 0 0 0 1 1h10a1 1 0 1 0 0-2H7a1 1 0 0 0-1 1Z"
-                    fill="currentColor"></path>
-            </svg>
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M6 12a1 1 0 0 0 1 1h10a1 1 0 1 0 0-2H7a1 1 0 0 0-1 1Z" fill="currentColor"></path></svg>
           </div>
           <div class="cart__product-action-span">{{ product.quantity }}</div>
           <div
               class="cart__product-actions-plus"
               @click="addOneProductToCart(product.id)"
           >
-            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path fill-rule="evenodd" clip-rule="evenodd"
-                    d="M12 6a1 1 0 0 0-1 1v4H7a1 1 0 1 0 0 2h4v4a1 1 0 1 0 2 0v-4h4a1 1 0 1 0 0-2h-4V7a1 1 0 0 0-1-1Z"
-                    fill="currentColor"></path>
-            </svg>
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 6a1 1 0 0 0-1 1v4H7a1 1 0 1 0 0 2h4v4a1 1 0 1 0 2 0v-4h4a1 1 0 1 0 0-2h-4V7a1 1 0 0 0-1-1Z" fill="currentColor"></path></svg>
           </div>
         </div>
       </div>

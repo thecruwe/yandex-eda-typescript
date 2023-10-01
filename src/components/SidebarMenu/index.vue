@@ -1,11 +1,7 @@
 <template>
   <div class="sidebar-menu">
     <div class="sidebar-menu__action">
-      <svg xmlns="http://www.w3.org/2000/svg" class="sidebar-menu__action-svg">
-        <path fill-rule="evenodd" clip-rule="evenodd"
-              d="m7.8 11 5.246-5.246a.5.5 0 0 0 0-.708l-.692-.692a.5.5 0 0 0-.708 0L4 12l7.646 7.646a.5.5 0 0 0 .708 0l.692-.692a.5.5 0 0 0 0-.708L7.8 13h11.7a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5H7.8Z"
-              fill="currentColor"></path>
-      </svg>
+      <svg xmlns="http://www.w3.org/2000/svg" class="sidebar-menu__action-svg"><path fill-rule="evenodd" clip-rule="evenodd" d="m7.8 11 5.246-5.246a.5.5 0 0 0 0-.708l-.692-.692a.5.5 0 0 0-.708 0L4 12l7.646 7.646a.5.5 0 0 0 .708 0l.692-.692a.5.5 0 0 0 0-.708L7.8 13h11.7a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5H7.8Z" fill="currentColor"></path></svg>
       <span class="sidebar-menu__action-span">Все рестораны</span>
     </div>
     <h1 class="sidebar-menu__title">Меню</h1>

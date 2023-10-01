@@ -60,6 +60,46 @@ $svg: 24px;
       color: #21201F;
       cursor: pointer;
     }
+
+    &-location {
+      border: 2px solid #D2D0CC;
+      width: 246px;
+      border-radius: 16px;
+      background-color: #FCE000;
+      color: #21201F;
+      height: 48px;
+      padding: 0 18px;
+      display: flex;
+      transition: all 0.2s ease-out;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      white-space: nowrap;
+
+      &-svg {
+        top: -1px;
+        display: inline-block;
+        position: relative;
+        margin-right: 2px;
+        vertical-align: middle;
+        width: $svg;
+        height: $svg;
+      }
+    }
+
+    &-switch-language {
+      margin-right: 24px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      margin-left: auto;
+
+      &-svg {
+        width: $svg;
+        height: $svg;
+      }
+    }
   }
 
   &__total-price {
@@ -78,56 +118,6 @@ $svg: 24px;
       height: $svg;
       margin-right: 2px;
       vertical-align: middle;
-    }
-  }
-
-  &__address {
-    flex-grow: 1;
-
-    &-action {
-      border: 2px solid #D2D0CC;
-      width: 246px;
-      border-radius: 16px;
-      background-color: #FCE000;
-      color: #21201F;
-      height: 48px;
-      padding: 0 18px;
-      display: flex;
-      transition: all 0.2s ease-out;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      white-space: nowrap;
-    }
-
-    &-span {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    &-svg {
-      top: -1px;
-      display: inline-block;
-      position: relative;
-      margin-right: 2px;
-      vertical-align: middle;
-      width: $svg;
-      height: $svg;
-    }
-
-  }
-
-  &__action-switch-language {
-    margin-right: 24px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-
-    &-svg {
-      width: $svg;
-      height: $svg;
     }
   }
 }

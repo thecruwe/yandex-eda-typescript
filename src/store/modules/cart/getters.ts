@@ -10,5 +10,5 @@ export const productsInCart = (state: TStateCart) => {
 };
 export const totalPriceInCart = (state: TStateCart, getters: any, rootState: any, rootGetters: any) => {
     const products = rootGetters["products/productsWithID"];
-    return state.cart.reduce((accumulator, {id, quantity}) => accumulator + products[id].price * quantity, 0);
+    return state.cart.reduce((accumulator, {id, quantity}) => accumulator + products[id].price.toFixed(0) * quantity, 0);
 };

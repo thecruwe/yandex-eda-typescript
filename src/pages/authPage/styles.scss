@@ -1,4 +1,4 @@
-.sign-in {
+.auth {
   display: flex;
   position: fixed;
   flex-direction: column;
@@ -13,7 +13,7 @@
   background-size: cover;
   background-image: url('https://yastatic.net/s3/passport-auth-customs/customs/_/4dK2cggE.png');
 
-  &__action-to-back {
+  &__action-back {
     background-image: url(https://yastatic.net/s3/passport-static/core/v1.115.4/i/authv2/back-arrow.svg);
     background-position: 50%;
     background-repeat: no-repeat;
@@ -26,18 +26,6 @@
     margin-bottom: auto;
   }
 
-  &__content {
-    display: flex;
-    flex-direction: column;
-    width: 360px;
-    max-height: 557px;
-    border-radius: 32px;
-    background-color: #fff;
-    padding: 32px;
-    flex: 1 0 auto;
-    margin: 0 auto;
-  }
-
   &__logo {
     display: flex;
     justify-content: center;
@@ -48,46 +36,26 @@
     border: solid 2px black;
   }
 
-  &__content-action {
-    &-sign-in {
-      display: flex;
-      margin: 10px 0 0;
-      background-color: #222426;
-      color: #fff;
-      height: 56px;
-      border-radius: 16px;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      text-decoration: none;
-    }
+  &__content {
+    display: flex;
+    flex-direction: column;
+    width: 360px;
+    max-height: 557px;
+    border-radius: 32px;
+    background-color: #fff;
+    padding: 32px;
+    flex: 1 0 auto;
+    margin: 0 auto;
 
-    &-sign-up {
-      display: flex;
-      margin: 10px 0 0;
-      background-color: #222426;
-      color: #fff;
-      height: 56px;
-      border-radius: 16px;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      text-decoration: none;
-    }
-  }
-
-  &__content-wrapper {
-    &-actions {
+    &-select {
       display: flex;
       justify-content: space-between;
       margin-top: 20px;
       border: solid 1px #d8dce6;
       border-radius: 20px;
       padding: 2px;
-    }
 
-    &-action {
-      &-email {
+      &-sign-up {
         display: flex;
         justify-content: center;
         align-items: center;
@@ -97,7 +65,7 @@
         cursor: pointer;
       }
 
-      &-password {
+      &-sign-in {
         display: flex;
         justify-content: center;
         align-items: center;
@@ -109,45 +77,60 @@
     }
 
     &-input {
-      display: flex;
-      text-align: center;
-      justify-content: center;
-      margin-top: 8px;
-      padding: 14px;
-      font-size: 20px;
-      height: 51px;
-      width: 100%;
-      border-radius: 20px;
-      border: solid 1px #d8dce6;
+      &-email {
+        display: flex;
+        text-align: center;
+        justify-content: center;
+        margin-top: 8px;
+        padding: 14px;
+        font-size: 20px;
+        height: 51px;
+        width: 100%;
+        border-radius: 20px;
+        border: solid 1px #d8dce6;
+      }
+
+      &-password {
+        display: flex;
+        text-align: center;
+        justify-content: center;
+        margin-top: 8px;
+        padding: 14px;
+        font-size: 20px;
+        height: 51px;
+        width: 100%;
+        border-radius: 20px;
+        border: solid 1px #d8dce6;
+      }
     }
-  }
-}
 
-.sign-up__content-wrapper-input {
-  &-email {
-    display: flex;
-    text-align: center;
-    justify-content: center;
-    margin-top: 8px;
-    padding: 14px;
-    font-size: 20px;
-    height: 51px;
-    width: 100%;
-    border-radius: 20px;
-    border: solid 1px #d8dce6;
-  }
+    &-action {
+      &-sign-in {
+        display: flex;
+        margin: 10px 0 0;
+        background-color: #222426;
+        color: #fff;
+        height: 56px;
+        border-radius: 16px;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        text-decoration: none;
+      }
 
-  &-password {
-    display: flex;
-    text-align: center;
-    justify-content: center;
-    margin-top: 8px;
-    padding: 14px;
-    font-size: 20px;
-    height: 51px;
-    width: 100%;
-    border-radius: 20px;
-    border: solid 1px #d8dce6;
+      &-sign-up {
+        display: flex;
+        margin: 10px 0 0;
+        background-color: #222426;
+        color: #fff;
+        height: 56px;
+        border-radius: 16px;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        text-decoration: none;
+      }
+    }
   }
 }
 

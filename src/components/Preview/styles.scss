@@ -47,7 +47,9 @@
   &__actions {
     display: flex;
     margin-top: 24px;
+  }
 
+  &__action {
     &-delivery {
       display: flex;
       height: 56px;

@@ -1,5 +1,8 @@
 <template>
-  <div class="product" v-if="product">
+  <div
+      class="product"
+      v-if="product"
+  >
     <img
         class="product__picture"
         :src="product.image"

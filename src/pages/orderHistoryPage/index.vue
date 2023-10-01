@@ -1,83 +1,100 @@
 <template>
   <div class="orders">
-    <div class="header">
-      <router-link to="/" class="header__action-to-back-router">
-        <img
-            src="https://yastatic.net/s3/eda-front/www/assets/desktop.back.f12112a002a623ccef71.svg"
-            class="header__action-to-back-img"
-            alt="Изображение стрелки назад"
-        >
-        Назад
-      </router-link>
-    </div>
-    <div class="container">
-      <h2 class="orders__title">Мои заказы</h2>
-      <div class="orders__container">
-        <div class="orders__history">
-          <div
-              class="orders__list"
-              v-for="order of listOfOrders"
-              :key="order"
-              @click="showMeUrId(order.productsInOrder)"
+    <div class="orders__wrapper">
+      <div class="orders__header">
+          <img
+              src="https://yastatic.net/s3/eda-front/www/assets/desktop.back.f12112a002a623ccef71.svg"
+              class="header-action__img"
+              alt="Изображение кнопки назад"
           >
-            <div class="orders__product">
-              <div class="orders__product-header">
-                <div class="orders__product-header-order-info">
-                  <div class="orders__product-header-order-title">Му-Му</div>
-                  <div class="orders__product-header-order-date">14 сентября 14:32</div>
+          <span
+              class="orders__header-action-back-span"
+              @click="$router.push('/shop')"
+          >
+            Назад
+          </span>
+      </div>
+      <h2 class="orders__title">Мои заказы</h2>
+      <div class="orders__content">
+        <div
+            class="orders__history"
+            v-if="listOfOrders"
+        >
+          <div
+              class="orders__history-product-list"
+              v-for="order of listOfOrders"
+              :key="order.id"
+              @click="getSelectedOrder(order.productsInOrder, order.totalPrice)"
+          >
+            <div class="orders__history-product">
+              <div class="orders__history-product-header">
+                <div class="orders__history-product-header-info-leftside">
+                  <div class="orders__history-product-header-info-leftside-title">Му-Му</div>
+                  <div class="orders__history-product-header-info-leftside-date">14 сентября 14:32</div>
                 </div>
-                <div class="orders__product-header-delivery-info">
-                  <span class="orders__product-header-delivery-info-price">{{ order.totalPrice }} ₽</span>
-                  <div class="orders__product-header-delivery-info-status">отменён</div>
+                <div class="orders__history-product-header-info-rightside">
+                  <span class="orders__history-product-header-info-rightside-price">{{ order.totalPrice.toFixed(0) }} ₽</span>
+                  <div class="orders__history-product-header-info-rightside-status">отменён</div>
                 </div>
               </div>
               <div
-                  class="orders__product-content"
+                  class="orders__history-product-content"
                   v-for="product in order.productsInOrder"
-                  :key="product.ID"
+                  :key="product.id"
               >
-                {{ product }}
                 <img
-                    class="orders__product-content-img"
-                    :src="productsWithId[product.id].image"
+                    class="orders__history-product-content-img"
+                    :src="productsWithId[product.id]?.image"
                     alt="Картинка продукта"
                 >
-                <div class="orders__product-content-title">{{ productsWithId[product.id].title }}</div>
+                <div class="orders__history-product-content-title">{{ productsWithId[product.id]?.title }}</div>
               </div>
             </div>
           </div>
         </div>
-        <div class="orders__info">
-          <h2 class="orders__info-header-title">Последний заказ</h2>
-          <div class="orders__info-header">
-            <div class="orders__info-header-number">№231233-131</div>
-            <div class="orders__info-header-date">Заказ создан 10 сентября, 15:46</div>
+        <div
+            class="orders__empty"
+            v-else
+        >
+          <h2 class="orders__empty-title">У вас еще не было ни одного заказа</h2>
+        </div>
+        <div class="orders__info-latest">
+          <h2 class="orders__info-latest-header-title">Последний заказ</h2>
+          <div class="orders__info-latest-header">
+            <div class="orders__info-latest-header-number">№231233-131</div>
+            <div class="orders__info-latest-header-date">Заказ создан 10 сентября, 15:46</div>
           </div>
           <div class="orders__info-address-title">Адрес</div>
           <div class="orders__info-address">Российская Федерация, Москва, улица Арбат, 26</div>
           <div class="orders__info-line"></div>
           <div class="orders__info-composition-title">Состав заказа</div>
-          <div class="orders__info-composition">
+          <div
+              class="orders__info-composition"
+              v-for="product in productsInLastOrder"
+              :key="product.id"
+          >
             <img
-                class="orders__info-composition-img"
+                class="orders__info-composition-product-img"
+                :src="productsWithId[product.id]?.image"
+                alt="Картинка товара"
             >
-            <div class="orders__info-composition-title">{{ massiv }}
-              <span></span>
+            <div class="orders__info-composition-product-title">{{ productsWithId[product.id]?.title }}
+              <span>{{ product.quantity }} шт</span>
             </div>
-            <div class="orders__info-composition-price"></div>
+            <div class="orders__info-composition-product-price">{{ productsWithId[product.id]?.price.toFixed(0) }} ₽</div>
           </div>
           <div class="orders__info-line"></div>
-          <div class="orders__info-pay">Оплата</div>
-          <div class="orders__info-about-price">
-            <div class="orders__info-about-price-items">
+          <div class="orders__info-footer-title">Оплата</div>
+          <div class="orders__info-footer-prices">
+            <div class="orders__info-footer-price-product">
               Стоимость товаров
-              <span>₽</span>
+              <span>{{totalPriceInLastOrder.toFixed(0)}} ₽</span>
             </div>
-            <div class="orders__info-about-price-delivery">
+            <div class="orders__info-footer-price-delivery">
               Стоимость доставки
               <span>₽</span>
             </div>
-            <div class="orders__info-about-price-total">
+            <div class="orders__info-footer-price-service">
               Сервисный сбор
               <span>₽</span>
             </div>
@@ -90,39 +107,46 @@
 
 <script lang="ts">
 import {
-  computed
+  computed, ref
 } from "vue";
 import store from "@/store";
+import product from "../../components/Product/index.vue";
 
 export default {
   name: 'ordersPage',
+  computed: {
+    product() {
+      return product
+    }
+  },
   setup() {
     const ordersList = JSON.parse(localStorage.getItem('Orders') as string);
 
-    const isAuthId = JSON.parse(localStorage.getItem('isAuth') as string);
+    const IDIsAuthUser = JSON.parse(localStorage.getItem('isAuth') as string);
 
     const productsWithId = computed(() => store.getters['products/productsWithID']);
 
-    const listOfOrders = ordersList?.filter((product: any) => product.ID === isAuthId.userIsAuth);
+    const listOfOrders = ordersList?.filter((product: {ID: number}) => product.ID === IDIsAuthUser?.userIsAuth);
 
-    const massiv: any = [];
-    const showMeUrId = (product:any) => {
-      if (massiv) {
-        massiv.shift()
-        product.forEach((item:any) => {
-          massiv.push(item);
-        });
+    const productsInLastOrder = ref(listOfOrders[0].productsInOrder);
+
+    const totalPriceInLastOrder = ref(listOfOrders[0].totalPrice);
+    const getSelectedOrder = (product: [], totalPrice: number) => {
+      if (productsInLastOrder.value) {
+        productsInLastOrder.value = [];
+        productsInLastOrder.value = product;
+        totalPriceInLastOrder.value = totalPrice;
       } else {
-        massiv.push(product)
+        productsInLastOrder.value = product;
       }
-      console.log(product)
-      console.log(massiv);
-    }
+    };
+
     return {
       listOfOrders,
       productsWithId,
-      showMeUrId,
-      massiv,
+      getSelectedOrder,
+      productsInLastOrder,
+      totalPriceInLastOrder
     }
   }
 }

@@ -21,12 +21,6 @@ const routes = [
         component: offer
     },
     {
-        path: '/secure',
-        name: 'homePage',
-        component: mainPage,
-
-    },
-    {
         path: '/orderHistoryPage',
         name: 'ordersPage',
         component: orders
