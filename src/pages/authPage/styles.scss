@@ -13,7 +13,7 @@
   background-size: cover;
   background-image: url('https://yastatic.net/s3/passport-auth-customs/customs/_/4dK2cggE.png');
 
-  &__action-back {
+  &-action {
     background-image: url(https://yastatic.net/s3/passport-static/core/v1.115.4/i/authv2/back-arrow.svg);
     background-position: 50%;
     background-repeat: no-repeat;
@@ -24,9 +24,35 @@
     width: 36px;
     position: absolute;
     margin-bottom: auto;
+
+    &__sign-in {
+      display: flex;
+      margin: 10px 0 0;
+      background-color: #222426;
+      color: #fff;
+      height: 56px;
+      border-radius: 16px;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      text-decoration: none;
+    }
+
+    &__sign-up {
+      display: flex;
+      margin: 10px 0 0;
+      background-color: #222426;
+      color: #fff;
+      height: 56px;
+      border-radius: 16px;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      text-decoration: none;
+    }
   }
 
-  &__logo {
+  &-logo {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -34,6 +60,63 @@
     margin: 0 auto 22px;
     border-radius: 100px;
     border: solid 2px black;
+  }
+
+  &-select {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    border: solid 1px #d8dce6;
+    border-radius: 20px;
+    padding: 2px;
+
+    &__sign-up {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      height: 51px;
+      color: #000;
+      cursor: pointer;
+    }
+
+    &__sign-in {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      height: 51px;
+      color: #000;
+      cursor: pointer;
+    }
+  }
+
+  &-input {
+    &__email {
+      display: flex;
+      text-align: center;
+      justify-content: center;
+      margin-top: 8px;
+      padding: 14px;
+      font-size: 20px;
+      height: 51px;
+      width: 100%;
+      border-radius: 20px;
+      border: solid 1px #d8dce6;
+    }
+
+    &__password {
+      display: flex;
+      text-align: center;
+      justify-content: center;
+      margin-top: 8px;
+      padding: 14px;
+      font-size: 20px;
+      height: 51px;
+      width: 100%;
+      border-radius: 20px;
+      border: solid 1px #d8dce6;
+    }
   }
 
   &__content {
@@ -46,91 +129,6 @@
     padding: 32px;
     flex: 1 0 auto;
     margin: 0 auto;
-
-    &-select {
-      display: flex;
-      justify-content: space-between;
-      margin-top: 20px;
-      border: solid 1px #d8dce6;
-      border-radius: 20px;
-      padding: 2px;
-
-      &-sign-up {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 100%;
-        height: 51px;
-        color: #000;
-        cursor: pointer;
-      }
-
-      &-sign-in {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 100%;
-        height: 51px;
-        color: #000;
-        cursor: pointer;
-      }
-    }
-
-    &-input {
-      &-email {
-        display: flex;
-        text-align: center;
-        justify-content: center;
-        margin-top: 8px;
-        padding: 14px;
-        font-size: 20px;
-        height: 51px;
-        width: 100%;
-        border-radius: 20px;
-        border: solid 1px #d8dce6;
-      }
-
-      &-password {
-        display: flex;
-        text-align: center;
-        justify-content: center;
-        margin-top: 8px;
-        padding: 14px;
-        font-size: 20px;
-        height: 51px;
-        width: 100%;
-        border-radius: 20px;
-        border: solid 1px #d8dce6;
-      }
-    }
-
-    &-action {
-      &-sign-in {
-        display: flex;
-        margin: 10px 0 0;
-        background-color: #222426;
-        color: #fff;
-        height: 56px;
-        border-radius: 16px;
-        align-items: center;
-        justify-content: center;
-        cursor: pointer;
-        text-decoration: none;
-      }
-
-      &-sign-up {
-        display: flex;
-        margin: 10px 0 0;
-        background-color: #222426;
-        color: #fff;
-        height: 56px;
-        border-radius: 16px;
-        align-items: center;
-        justify-content: center;
-        cursor: pointer;
-        text-decoration: none;
-      }
-    }
   }
 }
 
