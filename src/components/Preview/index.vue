@@ -3,7 +3,7 @@
     <div class="preview__logo">
       <img
           class="preview__logo-img"
-          src="https://eda.yandex/images/3439767/60cc137523f6a8e0750404068edf6ecf-1100x825.jpg"
+          :src="icons.logoRest"
           alt="Логотип ресторана"
       >
     </div>
@@ -34,10 +34,14 @@
 
 <script lang="ts">
 
+import icons from "@/icons";
+
 export default {
   name: 'Preview',
   setup() {
-    return {}
+    return {
+      icons
+    }
   }
 }
 

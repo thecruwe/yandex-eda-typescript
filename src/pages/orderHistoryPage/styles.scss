@@ -30,6 +30,8 @@
 }
 
 .header-action {
+  display: flex;
+  cursor: pointer;
   &__img {
     width: 16px;
     height: 16px;
@@ -38,7 +40,6 @@
 
   &__span {
     color: #9E9B98;
-    cursor: pointer;
   }
 }
 

@@ -6,7 +6,7 @@
           @click="$router.push('/shop')"
       >
         <img
-            src="https://yastatic.net/s3/eda-front/www/assets/desktop.back.f12112a002a623ccef71.svg"
+            :src="icons.actionBack"
             class="header-action__img"
             alt="Картинка кнопки назад"
         >
@@ -15,7 +15,7 @@
       <div class="header-logo">
         <img
             class="header-logo__img"
-            src="https://avatars.mds.yandex.net/get-bunker/994123/62e784df90b806d5d740ef444a393b528f3226bc/svg"
+            :src="icons.logoYE"
             alt="Картинка логотипа ЯЕ"
         >
       </div>
@@ -50,14 +50,14 @@
               </div>
               <div class="address">
                 <img
-                    src="https://yastatic.net/s3/eda-front/www/assets/desktop.home.43bb9d03ab149cbcdd5f.svg"
+                    :src="icons.addressPic"
                     class="address-img-home"
                     alt="Картинка адреса"
                 >
                 <span class="address__street">улица Российская</span>
                 <span class="address__number">47</span>
                 <img
-                    src="https://yastatic.net/s3/eda-front/www/assets/desktop.chevron.64415662ec95ae82661f.svg"
+                    :src="icons.arrowPic"
                     class="address-img-arrow"
                     alt="Картинка стрелки адреса"
                 >
@@ -113,7 +113,7 @@
                     @click="removeFromCart"
                 >
                   <img
-                      src="https://yastatic.net/s3/eda-front/www/assets/desktop.trash.e4a122e26252ac568700.svg"
+                      :src="icons.cartPic"
                       alt="Картинка корзины"
                   >
                   <span class="cart-clear-action__span">Очистить корзину</span>
@@ -203,6 +203,7 @@ import store from "@/store";
 import router from "@/router";
 import {TCartProduct} from "@/store/modules/cart/types";
 import {TProductsWithId} from "@/store/modules/products/types";
+import icons from "@/icons";
 
 export default {
   name: 'offerPage',
@@ -289,6 +290,7 @@ export default {
       inputComment,
       inputReceiverName,
       inputReceiverPhone,
+      icons
     }
   }
 }

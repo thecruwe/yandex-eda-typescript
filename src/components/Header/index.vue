@@ -2,8 +2,10 @@
   <div class="header">
     <div class="header__logo">
       <a href="https://eda.yandex.ru/moscow?shippingType=delivery">
-        <img src="https://avatars.mds.yandex.net/get-bunker/994123/62e784df90b806d5d740ef444a393b528f3226bc/svg"
-             alt="Логотип ЯЕ">
+        <img
+            :src="icons.yeLogo"
+            alt="Логотип ЯЕ"
+        >
       </a>
     </div>
       <div class="header__action-location">
@@ -53,6 +55,7 @@ import {
 } from "vue";
 import router from "@/router";
 import {TCartProduct} from "@/store/modules/cart/types";
+import icons from "@/icons";
 
 export default {
   name: 'Header',
@@ -72,7 +75,8 @@ export default {
       cart,
       totalPriceInCart,
       isAuthUser,
-      logoutFromAcc
+      logoutFromAcc,
+      icons
     }
   }
 }

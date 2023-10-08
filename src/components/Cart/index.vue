@@ -58,7 +58,7 @@
     >
       <img
           class="cart__empty-block-img"
-          src="https://avatars.mds.yandex.net/get-bunker/61205/a11b38948b6d328e2f739d602fa36b15b2680ba8/svg"
+          :src="icons.cartEmpty"
           alt="Картинка пустой корзины"
       >
       <span class="cart__empty-block-title">В вашей корзине пока пусто</span>
@@ -76,10 +76,13 @@ import {
 } from "vue";
 import {TCartProduct} from "@/store/modules/cart/types";
 import {TProductsWithId} from "@/store/modules/products/types";
+import icons from "@/icons";
 
 export default {
   name: 'Cart',
-  components: {CartFooter},
+  components: {
+    CartFooter
+  },
   setup() {
     const cart = computed<TCartProduct[]>(() => store.getters['cart/cart']);
 
@@ -104,11 +107,12 @@ export default {
       totalPriceInCart,
       emptyCart,
       addOneProductToCart,
-      removeProductOneFromCart
+      removeProductOneFromCart,
+      icons
     }
   }
 }
 
 </script>
 
-<style lang="scss" src="./styles.scss"></style>
+<style lang="scss" src="./styles.scss" scoped></style>

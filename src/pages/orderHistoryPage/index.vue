@@ -2,17 +2,21 @@
   <div class="orders">
     <div class="orders__wrapper">
       <div class="orders-header">
+        <div
+            class="header-action"
+            @click="$router.push('/shop')"
+        >
           <img
-              src="https://yastatic.net/s3/eda-front/www/assets/desktop.back.f12112a002a623ccef71.svg"
+              :src="icons.actionBack"
               class="header-action__img"
               alt="Изображение кнопки назад"
           >
           <span
               class="header-action__span"
-              @click="$router.push('/shop')"
           >
             Назад
           </span>
+        </div>
       </div>
       <h2 class="orders__title">Мои заказы</h2>
       <div class="orders__content">
@@ -65,13 +69,13 @@
             <div class="order-last__date">Заказ создан 10 сентября, 15:46</div>
           </div>
           <div class="order-address">Адрес</div>
-          <div class="order-address__title">Российская Федерация, Москва, улица Арбат, дом , кв {{headerInfo.apartment}}, этаж {{headerInfo.floor}} </div>
+          <div class="order-address__title">Российская Федерация, Москва, улица Арбат, дом , кв {{headerInfo?.apartment}}, этаж {{headerInfo?.floor}} </div>
           <div
               class="order-address__container"
-              v-if="headerInfo.comment"
+              v-if="headerInfo?.comment"
           >
             <span class="order-address__comment">Комментарий к заказу:</span>
-            <span class="order-address__comment-title">{{headerInfo.comment}}</span>
+            <span class="order-address__comment-title">{{headerInfo?.comment}}</span>
           </div>
           <div class="order-line"></div>
           <div class="order__title">Состав заказа</div>
@@ -119,6 +123,7 @@ import {
 import store from "@/store";
 import product from "../../components/Product/index.vue";
 import header from "../../components/Header/index.vue";
+import icons from "@/icons";
 
 export default {
   name: 'ordersPage',
@@ -162,7 +167,8 @@ export default {
       getSelectedOrder,
       productsInLastOrder,
       totalPriceInLastOrder,
-      headerInfo
+      headerInfo,
+      icons
     }
   }
 }
