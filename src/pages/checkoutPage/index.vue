@@ -1,6 +1,6 @@
 <template>
   <div class="checkout">
-    <div class="checkout__header">
+    <div class="checkout-header">
       <div
           class="header-action"
           @click="$router.push('/shop')"
@@ -66,23 +66,28 @@
                 <input
                     class="delivery-input delivery-input_margin"
                     placeholder="Кв./офис"
+                    v-model="inputApartment"
                 >
                 <input
                     class="delivery-input delivery-input_margin"
                     placeholder="Домофон"
+                    v-model="inputIntercom"
                 >
                 <input
                     class="delivery-input delivery-input_margin"
                     placeholder="Подъезд"
+                    v-model="inputEntrance"
                 >
                 <input
                     class="delivery-input"
                     placeholder="Этаж"
+                    v-model="inputFloor"
                 >
               </div>
               <input
                   class="delivery-input delivery-input_long"
                   placeholder="Комментарий к заказу"
+                  v-model="inputComment"
               >
               <div
                   class="delivery-inputs"
@@ -91,10 +96,12 @@
                 <input
                     class="delivery-input delivery-input_margin"
                     placeholder="Имя получателя"
+                    v-model="inputReceiverName"
                 >
                 <input
                     class="delivery-input"
                     placeholder="Номер телефона получателя"
+                    v-model="inputReceiverPhone"
                 >
               </div>
             </div>
@@ -130,7 +137,7 @@
                   <div class="cart-product__actions">
                     <div
                         class="product-action__minus"
-                        @click="removeProductOneFromCart(product.id)"
+                        @click="removeProductOneFromCart(product.id, product.quantity)"
                     >
                     </div>
                     <div class="product-action__span">{{ product.quantity }}</div>
@@ -164,7 +171,7 @@
               </div>
               <div class="info-order__price-delivery">
                 <span>Доставка</span>
-                <span>0 ₽</span>
+                <span>49 ₽</span>
               </div>
               <div class="info-order__price-service">
                 <span>Работа сервиса</span>
@@ -208,13 +215,37 @@ export default {
 
     const totalPriceInCart = computed<number>(() => store.getters['cart/totalPriceInCart']);
 
+    const inputApartment = ref('');
+
+    const inputIntercom = ref('');
+
+    const inputEntrance = ref('');
+
+    const inputFloor = ref('');
+
+    const inputComment = ref('');
+
+    const inputReceiverName = ref('');
+
+    const inputReceiverPhone = ref('');
+
     const creatingAnOrder = () => {
       const userId = JSON.parse(localStorage.getItem("isAuth") as string);
       const orders = {
         id: userId.userIsAuth,
         productsInOrder: cart.value,
         totalPrice: totalPriceInCart.value,
+        userAddress: {
+          apartment: inputApartment.value,
+          intercom: inputIntercom.value,
+          entrance: inputEntrance.value,
+          floor: inputFloor.value,
+          comment: inputComment.value,
+          receiverName: inputReceiverName.value,
+          receiverPhone: inputReceiverPhone.value
+        }
       }
+      console.log(Object.values(orders.userAddress))
       const ordersFromUsers = localStorage.getItem("Orders") ?
           JSON.parse(localStorage.getItem("Orders") as string) : [];
       ordersFromUsers.unshift(orders);
@@ -234,8 +265,11 @@ export default {
       store.commit('cart/ADD_PRODUCT_TO_CART', productID);
     };
 
-    const removeProductOneFromCart = (productID: number) => {
+    const removeProductOneFromCart = (productID: number, quantity: number) => {
       store.commit('cart/REMOVE_PRODUCT_ONE_FROM_CART', productID);
+      if (quantity === 1) {
+        router.push('/shop');
+      }
     };
 
     return {
@@ -247,7 +281,14 @@ export default {
       removeProductOneFromCart,
       changeMethodOfDelivery,
       delivery,
-      creatingAnOrder
+      creatingAnOrder,
+      inputApartment,
+      inputIntercom,
+      inputEntrance,
+      inputFloor,
+      inputComment,
+      inputReceiverName,
+      inputReceiverPhone,
     }
   }
 }

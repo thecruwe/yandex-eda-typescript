@@ -14,22 +14,9 @@
     width: 1144px;
   }
 
-  &__header {
+  &-header {
     display: flex;
     margin-top: 20px;
-
-    &-action-back {
-      &-img {
-        width: 16px;
-        height: 16px;
-        margin-right: 6px;
-      }
-
-      &-span {
-        color: #9E9B98;
-        cursor: pointer;
-      }
-    }
   }
 
   &__title {
@@ -40,22 +27,82 @@
     display: flex;
     gap: 100px;
   }
+}
 
-  &__history-product {
-    &-list {
-      width: 460px;
-      padding: 24px;
-      margin-bottom: 10px;
-      border-radius: 32px;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.07);
-      background-color: #FFFFFF;
-      cursor: pointer;
+.header-action {
+  &__img {
+    width: 16px;
+    height: 16px;
+    margin-right: 6px;
+  }
+
+  &__span {
+    color: #9E9B98;
+    cursor: pointer;
+  }
+}
+
+.product {
+  &__header {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__title {
+    font-size: 22px;
+  }
+
+  &__date {
+    margin-bottom: 3px;
+    color: #9E9B98;
+    font-size: 13px;
+    line-height: 17px;
+  }
+
+  &__price {
+    font-size: 20px;
+    line-height: 23px;
+    letter-spacing: -0.01em;
+    white-space: nowrap;
+    font-weight: 500;
+    color: #21201F;
+    margin-bottom: 3px;
+  }
+
+  &__status {
+    color: rgb(250, 62, 44);
+    text-transform: lowercase;
+    font-size: 13px;
+    line-height: 17px;
+    font-weight: normal;
+  }
+
+  &__content {
+    display: flex;
+    margin: 10px 0;
+
+    &-img {
+      width: 69px;
+      height: 69px;
+      border-radius: 18px;
+      margin-right: 7px;
     }
 
-    &-header {
-      display: flex;
-      justify-content: space-between;
+    &-title {
+      width: 250px;
     }
+  }
+}
+
+.order {
+  &-list {
+    width: 460px;
+    padding: 24px;
+    margin-bottom: 10px;
+    border-radius: 32px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.07);
+    background-color: #FFFFFF;
+    cursor: pointer;
   }
 
   &__empty {
@@ -75,178 +122,132 @@
     }
   }
 
-
-  &__info-latest {
+  &-last {
     padding: 32px;
     width: 600px;
     background-color: #FFFFFF;
     border-radius: 32px;
     align-self: start;
 
-    &-header {
+    &__title {
+      margin-bottom: 10px;
+      font-size: 22px;
+    }
+
+    &__number {
+      color: #9E9B98;
+      font-size: 13px;
+      line-height: 17px;
+    }
+
+    &__date {
+      color: #9E9B98;
+      font-weight: normal;
+      font-size: 13px;
+      line-height: 17px;
+    }
+
+    &__header {
       display: flex;
       justify-content: space-between;
       margin-bottom: 20px;
-
-      &-title {
-        margin-bottom: 10px;
-        font-size: 22px;
-      }
-
-      &-date {
-        color: #9E9B98;
-        font-weight: normal;
-        font-size: 13px;
-        line-height: 17px;
-      }
-
-      &-number {
-        color: #9E9B98;
-        font-size: 13px;
-        line-height: 17px;
-      }
     }
   }
 
-  &__info {
-    &-address {
+  &-address {
+    margin-bottom: 20px;
+    color: #9E9B98;
+    font-size: 16px;
+    line-height: 21px;
+
+    &__title {
       font-size: 16px;
       line-height: 21px;
-
-      &-title {
-        margin-bottom: 20px;
-        color: #9E9B98;
-        font-size: 16px;
-        line-height: 21px;
-      }
     }
 
-    &-line {
-      height: 1px;
-      margin: 32px 0;
-      opacity: 0.5;
-      border-top: 1px solid #D2D0CC;
-    }
-
-    &-composition {
+    &__container {
       display: flex;
-      margin-top: 16px;
-
-      &-title {
-        color: #9E9B98;
-        font-size: 16px;
-        line-height: 21px;
-      }
-
-      &-product {
-        &-img {
-          width: 69px;
-          height: 69px;
-          border-radius: 18px;
-          margin-right: 7px;
-        }
-
-        &-title {
-          display: flex;
-          flex-direction: column;
-          flex-grow: 2;
-        }
-
-        &-price {
-          white-space: nowrap;
-        }
-
-      }
+      flex-direction: column;
+      margin: 20px 0;
+      color: #9E9B98;
+      font-size: 16px;
+      line-height: 21px;
     }
 
-    &-footer {
+    &__comment {
+      margin-bottom: 20px;
+
       &-title {
-        margin-bottom: 20px;
-        color: #9E9B98;
-        font-size: 16px;
-        line-height: 21px;
-      }
-
-      &-price {
-        &-product {
-          display: flex;
-          justify-content: space-between;
-        }
-
-        &-delivery {
-          display: flex;
-          justify-content: space-between;
-          margin-top: 12px;
-        }
-
-        &-service {
-          display: flex;
-          justify-content: space-between;
-          margin-top: 12px;
-        }
+        color: black;
       }
     }
   }
 
-  &__history {
-    &-product {
-      &-content {
+  &-composition {
+    display: flex;
+    margin-top: 16px;
+  }
+
+  &__title {
+    color: #9E9B98;
+    font-size: 16px;
+    line-height: 21px;
+  }
+
+  &-line {
+    height: 1px;
+    margin: 32px 0;
+    opacity: 0.5;
+    border-top: 1px solid #D2D0CC;
+  }
+
+  &-product {
+    &__img {
+      width: 69px;
+      height: 69px;
+      border-radius: 18px;
+      margin-right: 7px;
+    }
+
+    &__title {
+      display: flex;
+      flex-direction: column;
+      flex-grow: 2;
+    }
+
+    &__price {
+      white-space: nowrap;
+    }
+  }
+
+  &-footer {
+    &__title {
+      margin-bottom: 20px;
+      color: #9E9B98;
+      font-size: 16px;
+      line-height: 21px;
+    }
+
+    &__price {
+      &-product {
         display: flex;
-        margin: 10px 0;
-
-        &-img {
-          width: 69px;
-          height: 69px;
-          border-radius: 18px;
-          margin-right: 7px;
-        }
-
-        &-title {
-          width: 250px;
-        }
+        justify-content: space-between;
       }
 
-      &-header {
-        &-info {
-          &-rightside {
-            &-price {
-              font-size: 20px;
-              line-height: 23px;
-              letter-spacing: -0.01em;
-              white-space: nowrap;
-              font-weight: 500;
-              color: #21201F;
-              margin-bottom: 3px;
-            }
+      &-delivery {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 12px;
+      }
 
-            &-status {
-              color: rgb(250, 62, 44);
-              text-transform: lowercase;
-              font-size: 13px;
-              line-height: 17px;
-              font-weight: normal;
-            }
-          }
-
-          &-leftside {
-            &-title {
-              margin-bottom: 10px;
-              font-size: 22px;
-            }
-
-            &-date {
-              margin-bottom: 20px;
-              color: #9E9B98;
-              font-size: 13px;
-              line-height: 17px;
-            }
-          }
-        }
+      &-service {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 12px;
       }
     }
   }
 }
-
 
 
 

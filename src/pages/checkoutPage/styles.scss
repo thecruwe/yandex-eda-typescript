@@ -7,7 +7,7 @@
   overflow: auto;
   background-color: #f5f4f2;
 
-  &__header {
+  &-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -110,11 +110,6 @@
     display: flex;
     max-height: 69px;
     margin-top: 24px;
-    overflow: auto;
-
-    &::-webkit-scrollbar {
-      width: 0;
-    }
 
     &__actions {
       display: flex;
@@ -122,11 +117,16 @@
       align-items: center;
       margin: 20px;
       font-size: 16px;
-      line-height: 24px;
+      line-height: 22px;
     }
 
     &__title {
       max-width: 140px;
+      overflow: auto;
+
+      &::-webkit-scrollbar {
+        width: 0;
+      }
     }
 
     &__img {
@@ -172,6 +172,7 @@
     white-space: nowrap;
     display: flex;
     justify-content: flex-end;
+    font-size: 18px;
   }
 
   &-action {
@@ -265,16 +266,18 @@
   }
 }
 
-.header-action {
-  display: flex;
-  align-items: center;
-  color: #9E9B98;
-  cursor: pointer;
+.header {
+  &-action {
+    display: flex;
+    align-items: center;
+    color: #9E9B98;
+    cursor: pointer;
 
-  &__img {
-    width: 16px;
-    height: 16px;
-    margin-right: 6px;
+    &__img {
+      width: 16px;
+      height: 16px;
+      margin-right: 6px;
+    }
   }
 }
 
@@ -379,7 +382,7 @@
     flex-direction: column;
     justify-content: center;
     color: #21201F;
-    font-size: 24px;
+    font-size: 22px;
     font-weight: 500;
     line-height: 28px;
     white-space: nowrap;
